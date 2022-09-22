@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { ItemCart } from "../itemCart";
+import { ItemCart } from "../itemCart/itemCart";
 import CartContext from "../../context/cartContext";
 import styles from "./styles.module.scss";
 
@@ -14,6 +14,7 @@ const Cart = () => {
 
   /* Cada vez que se modifica el carrito, actualizamos la cantidad de productos */
   useEffect(() => {
+    console.log("se le quito")
     setProductsLength(
       cartItems?.reduce((previous, current) => previous + current.amount, 0)
     );

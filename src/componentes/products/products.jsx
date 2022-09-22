@@ -11,15 +11,15 @@ const Products = () => {
       {products &&
         products.map((product, i) => (
           <div key={i} className={styles.product}>
-            <img src={product.img} alt={product.nombre} />
+            <img src={product.img} alt={product.name} />
             <div>
               <p>
-                {product.nombre} - ${product.precio}
+                {product.name} - ${product.price}
               </p>
             </div>
             {!product.inCart ? (
               <button onClick={() => addItemToCart(product)}>
-                Add to Cart
+                Agregar
               </button>
             ) : (
               <button>En el carrito</button>

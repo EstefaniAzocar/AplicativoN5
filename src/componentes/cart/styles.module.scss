@@ -1,9 +1,10 @@
 .cartContainer {
     width: 100vw;
-    height: 50px;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
     font-family: Roboto;
+    
   
     .buttonCartContainer {
       position: absolute;
@@ -47,8 +48,9 @@
       position: absolute;
       margin-top: 10px;
       margin-right: 20px;
-      border-radius: 30px;
-      width: 400px;
+      border-radius: 20px;
+      width: 35%;
+      height: 95vh;
       background-color: #222222;
       color: white;
   
