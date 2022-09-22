@@ -9,32 +9,28 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
 
-  const getProducts = async () => {
-    const newProducts = ProductsData 
+  const getProducts =  () => {
+    const productsFromStorage = JSON.parse(window.localStorage.getItem('products'))
+    const newProducts = productsFromStorage || ProductsData
 
     setProducts(newProducts)
-    // await axios
-    //   .get("http://localhost:4000/products")
-    //   .then(({ data }) => setProducts(data.products));
   };
 
-  const getProductsCart = async () => {
-    // return await axios
-    //   .1get("http://localhost:3000/products-cart")
-    //   .then(({ data }) => setCartItems(data.productsCart))
-    //   .catch((error) => console.error(error));
-  };
+  const getCartItems = () => {
+    const cartFromStorage = JSON.parse(window.localStorage.getItem('cart'))
+    const cart = cartFromStorage || []
+
+    setCartItems(cart)
+  }
 
   useEffect(() => {
     getProducts();
-    getProductsCart();
+    getCartItems()
   }, []);
 
-  const addItemToCart = async (product) => {
-    // const { nombre, img, precio } = product;
-    //preguntarme si ya existe en el carrito
-      //buscarlo en el carrito y sumarle 1
-    //no existe
+  const addItemToCart = (product) => {
+      //preguntarme si ya existe en el carrito
+      //no existe
       //agregarlo con un 1
       let newCart
 
@@ -68,35 +64,64 @@ export const CartProvider = ({ children }) => {
           ]
       }
   
+      
+      const cartToStorage = JSON.stringify(newCart) 
+      window.localStorage.setItem('cart', cartToStorage)
+
+      setCartItems(newCart)
+
+  };
+
+  const restItemToCart =  (product)=> {
+        
+    let newCart = cartItems.map((productCarrito) => {
   
-    // await axios.post("http://localhost:3000/products-cart", { nombre, img, precio });
+      if (productCarrito.id === product.id) {
 
-    // getProducts();
-    // getProductsCart();
+        const updatedItem = {
+          ...productCarrito,
+          amount: productCarrito.amount - 1
+        };
+
+        return updatedItem;
+      }
+
+      return productCarrito;
+    });
+
+    newCart = newCart.filter(productCarrito => productCarrito.amount > 0)
+
+    const cartToStorage = JSON.stringify(newCart) 
+    window.localStorage.setItem('cart', cartToStorage)
+
     setCartItems(newCart)
-  };
 
-  const editItemToCart = async (id, query, amount) => {
-    if (query === "del" && amount === 1) {
-      // await axios
-      //   .delete(`http://localhost:3000/products-cart/${id}`)
-      //   .then(({ data }) => console.log(data));
-    } else {
-      // await axios
-      //   .put(`http://localhost:3000/products-cart/${id}?query=${query}`, {
-      //     amount,
-        // })
-        // .then(({ data }) => console.log(data));
-    }
 
-    getProducts();
-    getProductsCart();
-  };
+  }
+
+  const addProduct = (product) => {
+    const newProducts = [
+      ...products,
+      product
+    ]
+
+    
+    const productsToStorage = JSON.stringify(newProducts) 
+    window.localStorage.setItem('products', productsToStorage)
+
+    setProducts(newProducts)
+  }
+
+  const resetCart = () => {
+    setCartItems([])
+    const cartToStorage = JSON.stringify([]) 
+    window.localStorage.setItem('cart', cartToStorage)
+  }
 
   return (
     /* Envolvemos el children con el provider y le pasamos un objeto con las propiedades que necesitamos por value */
     <CartContext.Provider
-      value={{ cartItems, products, addItemToCart, editItemToCart }}
+      value={{ cartItems, products, addItemToCart, restItemToCart, addProduct,resetCart }}
     >
       {children}
     </CartContext.Provider>

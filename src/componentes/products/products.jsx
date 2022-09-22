@@ -7,25 +7,28 @@ const Products = () => {
   const { addItemToCart, products } = useContext(CartContext);
 
   return (
-    <div className={styles.productsContainer}>
-      {products &&
-        products.map((product, i) => (
-          <div key={i} className={styles.product}>
-            <img src={product.img} alt={product.name} />
-            <div>
-              <p>
-                {product.name} - ${product.price}
-              </p>
+    <div className={styles.store}>
+      <h1>Tienda Stefany</h1>
+      <div className={styles.productsContainer}>
+        {products &&
+          products.map((product, i) => (
+            <div key={i} className={styles.product}>
+              <img src={product.img} alt={product.name} />
+              <div>
+                <p>
+                  {product.name} - ${product.price}
+                </p>
+              </div>
+              {!product.inCart ? (
+                <button onClick={() => addItemToCart(product)}>
+                  Agregar
+                </button>
+              ) : (
+                <button>En el carrito</button>
+              )}
             </div>
-            {!product.inCart ? (
-              <button onClick={() => addItemToCart(product)}>
-                Agregar
-              </button>
-            ) : (
-              <button>En el carrito</button>
-            )}
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   );
 };

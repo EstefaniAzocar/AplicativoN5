@@ -1,14 +1,22 @@
-import React, {useState} from "react";
+import React, { useState, useContext } from "react";
+import CartContext from "../../context/cartContext";
+import styles from './styles.module.scss'
+import { useNavigate } from "react-router-dom";
 
 const AddProducts = () => {
 
+    const { addProduct } = useContext(CartContext);
+
     const [producto, setProducto] = useState({
+        id: new Date().getTime(),
         name: '',
-        price: null,
-        image: null
+        price: 0,
+        image: '',
     });
 
-    const handleChenge =(e) => {
+    let navigate = useNavigate();
+
+    const handleChenge = (e) => {
         setProducto({
             ...producto,
             [e.target.name]: e.target.value
@@ -16,55 +24,68 @@ const AddProducts = () => {
     };
 
     const handleImage = (e) => {
-        setProducto({
-            ...producto,
-            image: e.target.files[0]
-        })
+
+        const fr = new FileReader()
+        fr.readAsDataURL(e.target.files[0])
+        fr.onload = function (carga) {
+            const url = carga.currentTarget.result
+            setProducto({
+                ...producto,
+                img: url
+            })
+        }
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        addProduct(producto)
+        setProducto({
+            id: new Date().getTime(),
+            name: '',
+            price: 0,
+            image: '',
+        })
     }
 
     return (
-        <div className="formContainer">
+        <div className={styles.formContainer}>
+            <button onClick={() => navigate('/')}>Home</button>
             <h2>Nuevo producto</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.formGroup}>
                     <label htmlFor="name">Nombre:</label>
-                    <input type="texto" 
-                        className="formInput" 
-                        name="name" 
-                        placeholder="Ingresar nombre" 
-                        defaultValue={producto.name} 
-                        onChange={handleChenge} 
+                    <input type="texto"
+                        className="formInput"
+                        name="name"
+                        placeholder="Ingresar nombre"
+                        defaultValue={producto.name}
+                        onChange={handleChenge}
                         required
                     />
                 </div>
 
-                <div className="form-group">
+                <div className={styles.formGroup}>
                     <label htmlFor="price">Precio:</label>
-                    <input type="number" 
-                        className="formInput" 
+                    <input type="number"
+                        className="formInput"
                         name="price"
                         step="1"
-                        min="0" 
-                        placeholder="Ingresar precio" 
-                        defaultValue={producto.precio} 
-                        onChange={handleChenge} 
+                        min="0"
+                        placeholder="Ingresar precio"
+                        defaultValue={producto.precio}
+                        onChange={handleChenge}
                         required
                     />
                 </div>
-                <div className="form-group">
+                <div className={styles.formGroup}>
                     <label htmlFor="img">Imagen:</label>
-                    <input type="file" 
-                        className="formInput" 
-                        name="img" 
-                        onChange={handleImage} 
+                    <input type="file"
+                        className="formInput"
+                        name="img"
+                        onChange={handleImage}
                     />
                 </div>
-                <button type="submit" className="btn">
+                <button className={styles.button} type="submit">
                     Guardar Producto
                 </button>
             </form>

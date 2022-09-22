@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ItemCart } from "../itemCart/itemCart";
 import CartContext from "../../context/cartContext";
 import styles from "./styles.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   /* Creamos 2 estados, uno para ver si el carrito esta abierto o no 
@@ -10,11 +11,11 @@ const Cart = () => {
   const [productsLength, setProductsLength] = useState(0);
 
   /* Traemos del context los productos del carrito */
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, resetCart } = useContext(CartContext);
+  let navigate = useNavigate();
 
   /* Cada vez que se modifica el carrito, actualizamos la cantidad de productos */
   useEffect(() => {
-    console.log("se le quito")
     setProductsLength(
       cartItems?.reduce((previous, current) => previous + current.amount, 0)
     );
@@ -28,6 +29,9 @@ const Cart = () => {
 
   return (
     <div className={styles.cartContainer}>
+      <div className={styles.buttonNuevoProducto} onClick={()=>navigate('/nuevoProducto')}>
+        +
+      </div>
       <div
         onClick={() => setCartOpen(!cartOpen)}
         className={styles.buttonCartContainer}
@@ -76,7 +80,14 @@ const Cart = () => {
 
       {cartItems && cartOpen && (
         <div className={styles.cart}>
+          
           <h2>Tu carrito</h2>
+
+          {cartItems.length > 0 && cartOpen &&
+            <button className={styles.buttonLimpiarCarrito} onClick={resetCart}>
+              Clear
+            </button>
+          }
 
           {cartItems.length === 0 ? (
             <p className={styles.cartVacio}>Tu carrito esta vacio</p>
