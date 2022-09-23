@@ -17,7 +17,7 @@ export const ProductsData = [
     },
     {
         id: 3,
-        price: 2500,
+        price: 2400,
         categoria:3,
         amount: 0,
         name: "Jabon",
