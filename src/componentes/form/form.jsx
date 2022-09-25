@@ -50,11 +50,12 @@ const AddProducts = () => {
     return (
         <div className={styles.formContainer}>
             <button onClick={() => navigate('/')}>Home</button>
-            <h2>Nuevo producto</h2>
+            <h1>Nuevo producto</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>
-                    <label htmlFor="name">Nombre:</label>
-                    <input type="texto"
+                    <label  htmlFor="name">Nombre:</label>
+                    <input aria-label={'name'}
+                        type="texto"
                         className="formInput"
                         name="name"
                         placeholder="Ingresar nombre"
@@ -66,7 +67,8 @@ const AddProducts = () => {
 
                 <div className={styles.formGroup}>
                     <label htmlFor="price">Precio:</label>
-                    <input type="number"
+                    <input aria-label={'price'}
+                        type="number"
                         className="formInput"
                         name="price"
                         step="1"
