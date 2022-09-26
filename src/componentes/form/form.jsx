@@ -2,6 +2,9 @@ import React, { useState, useContext } from "react";
 import CartContext from "../../context/cartContext";
 import styles from './styles.module.scss'
 import { useNavigate } from "react-router-dom";
+import { FaReply } from "react-icons/fa";
+
+
 
 const AddProducts = () => {
 
@@ -49,7 +52,7 @@ const AddProducts = () => {
 
     return (
         <div className={styles.formContainer}>
-            <button onClick={() => navigate('/')}>Home</button>
+            <button className={styles.buttonRe} onClick={() => navigate('/')}><FaReply/></button>
             <h1>Nuevo producto</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.formGroup}>

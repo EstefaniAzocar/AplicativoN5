@@ -121,7 +121,7 @@ export const CartProvider = ({ children }) => {
   return (
     /* Envolvemos el children con el provider y le pasamos un objeto con las propiedades que necesitamos por value */
     <CartContext.Provider
-      value={{ cartItems, products, addItemToCart, restItemToCart, addProduct,resetCart }}
+      value={{ cartItems, products, addItemToCart, restItemToCart, addProduct, resetCart }}
     >
       {children}
     </CartContext.Provider>

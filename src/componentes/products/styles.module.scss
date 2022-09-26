@@ -33,7 +33,7 @@
         }
     
         button {
-          background-color: palevioletred;
+          background-color: #4db852;
           padding: 5px 15px;
           display: flex;
           width: fit-content;
@@ -43,13 +43,13 @@
           margin: 0 auto;
           cursor: pointer;    
           color: white;
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 500;
       
         }
     
         button:hover {
-          background-color: #b3cfe2;
+          background-color: #28692b;
         }
     }
 }
@@ -63,7 +63,7 @@
   padding: 20px;
 
   h1{
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 20px;
     font-size: 48px;  
   }

@@ -7,8 +7,9 @@
     align-items: center;
 
     h1{
-        margin-bottom: 80px;
-        font-size: 48px;  
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-size: 48px;
         text-align: center;
     }
 }
@@ -17,8 +18,7 @@
 .form{
     max-width: 450px;
     width: 90%;
-    border-radius: 5px;
-    background-color: purple;   
+    border-radius: 5px;   
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -46,10 +46,19 @@
     }
 }
 
-
+.buttonRe{
+      top: 20px;
+      margin-left: auto;
+      width: 30px;
+      height: 30px;
+      color: black;
+      border: none;
+      font-size: 30px;
+      background-color: papayawhip;
+}
 
 .button{
-    background-color: palevioletred;
+    background-color: #4db852;
     padding: 10px;
     display: flex;
     width: fit-content;
@@ -59,11 +68,12 @@
     margin: 0 auto;
     cursor: pointer;    
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
 
 
     &:hover{
         transform: scale(1.02);
+        background-color: #28692b;
     }
   }

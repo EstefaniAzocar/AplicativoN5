@@ -3,6 +3,9 @@ import { ItemCart } from "../itemCart/itemCart";
 import CartContext from "../../context/cartContext";
 import styles from "./styles.module.scss";
 import { useNavigate } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
+
+
 
 const Cart = () => {
   /* Creamos 2 estados, uno para ver si el carrito esta abierto o no 
@@ -85,7 +88,7 @@ const Cart = () => {
 
           {cartItems.length > 0 && cartOpen &&
             <button className={styles.buttonLimpiarCarrito} onClick={resetCart}>
-              Clear
+              <FaTrashAlt />
             </button>
           }
 
