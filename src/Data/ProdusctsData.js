@@ -13,7 +13,7 @@ export const ProductsData = [
         categoria:2,
         amount: 0,
         name: "leche",
-        img: "https://supermercadosla80.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMGFRamc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1fc63b3f8953935195dda962eac68a1f0174f6d3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9TY21WemFYcGxYM1J2WDJacGRGc0hhUUlnQTJrQ0lBTTZER052Ym5abGNuUkpJZ2hxY0djR09nWkZWRG9LYzJGMlpYSjdDRG9NY1hWaGJHbDBlV2xmT2dwemRISnBjRlE2RDJKaFkydG5jbTkxYm1SYkNHa0IvMmtCLzJrQi93PT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--f9b6205701877dad933126b17f2a1a57fbbba520/7702024402831.png?locale=es",
+        img: "https://i.pinimg.com/736x/1b/e2/e4/1be2e43a0f751b3420a6967a956c8cf0.jpg",
     },
     {
         id: 3,
@@ -33,11 +33,11 @@ export const ProductsData = [
     },
     {
         id: 5,
-        price: 1500,
+        price: 6500,
         categoria:3,
         amount: 0,
         name: "Coca cola",
-        img: "https://cafamfloresta.com.co/wp-content/uploads/2021/04/coca-cola.gif",
+        img: "https://i.pinimg.com/736x/19/e2/da/19e2da7f17560b9e182d821170d8d132.jpg",
     },
     {
         id: 6,
